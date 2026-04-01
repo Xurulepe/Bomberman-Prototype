@@ -14,6 +14,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Drop-Bomb",
+                    "type": "Button",
+                    "id": "af91d571-b3f1-4d0b-8238-a075a21f3505",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -71,6 +80,17 @@
                     "action": "Move-WASD",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f32f2930-d7f8-47d6-931f-0d8ec3becde3",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Drop-Bomb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
