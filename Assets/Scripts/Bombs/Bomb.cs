@@ -32,6 +32,11 @@ public class Bomb : MonoBehaviour
         foreach (Collider2D hit in objectsHit)
         {
             Debug.Log("Hit object: " + hit.name);
+
+            if (hit.TryGetComponent(out IDestroyable destroyable))
+            {
+                destroyable.Destroy();
+            }
         }
 
         gameObject.SetActive(false);
