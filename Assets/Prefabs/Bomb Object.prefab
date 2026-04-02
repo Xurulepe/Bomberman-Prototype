@@ -83,7 +83,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bomb
   explosionDelay: 5
-  explosionTimer: 0
+  explosionDistance: 3
+  explosionLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &2573596349808622222
 GameObject:
   m_ObjectHideFlags: 0
