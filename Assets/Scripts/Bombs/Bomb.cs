@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bomb : MonoBehaviour
@@ -6,6 +7,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] private float explosionDelay = 3f;
     [SerializeField] private int explosionDistance = 3;
     [SerializeField] private LayerMask explosionLayerMask;
+    [SerializeField] private LayerMask playerLayerMask;
 
     private float explosionTimer = 0f;
     private Collider2D[] objectsHit;
@@ -13,6 +15,8 @@ public class Bomb : MonoBehaviour
     private void OnEnable()
     {
         explosionTimer = 0f;
+
+        StartCoroutine(IgnoreCollisionWithPlayersUntilExit());
     }
 
     private void Update()
@@ -62,6 +66,24 @@ public class Bomb : MonoBehaviour
         }
 
         return allObjectsInExplosionRange;
+    }
+
+    private IEnumerator IgnoreCollisionWithPlayersUntilExit()
+    {
+        Collider2D bombCollider = GetComponent<Collider2D>();
+        Collider2D playerCollider = Physics2D.OverlapBox(transform.position, Vector2.one, 0f, playerLayerMask);
+
+        if (playerCollider == null)
+        {
+            yield break; 
+        }
+
+        Physics2D.IgnoreCollision(bombCollider, playerCollider, true);
+
+        // Espera até não estarem mais sobrepostos
+        yield return new WaitUntil(() => !bombCollider.bounds.Intersects(playerCollider.bounds));
+
+        Physics2D.IgnoreCollision(bombCollider, playerCollider, false);
     }
 
     private void OnDrawGizmosSelected()

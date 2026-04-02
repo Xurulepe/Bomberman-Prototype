@@ -12,7 +12,10 @@ public class PlayerBombAttack : MonoBehaviour
 
         if (bomb != null)
         {
-            bomb.transform.position = transform.position;
+            int bombPositionX = Mathf.RoundToInt(transform.position.x);
+            int bombPositionY = Mathf.RoundToInt(transform.position.y);
+
+            bomb.transform.position = new Vector3(bombPositionX, bombPositionY, transform.position.z);
             bomb.transform.rotation = transform.rotation;
             bomb.SetActive(true);
         }
