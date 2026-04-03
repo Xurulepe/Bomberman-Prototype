@@ -442,6 +442,7 @@ GameObject:
   - component: {fileID: 446244019}
   - component: {fileID: 446244018}
   - component: {fileID: 446244020}
+  - component: {fileID: 446244021}
   m_Layer: 6
   m_Name: Square (3)
   m_TagString: Untagged
@@ -581,6 +582,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a910c9386be4d41b37488e199e06ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyableObject
+--- !u!114 &446244021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446244016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db66c183bf593f7489d1755ba94b8d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyableWall
+  powerUpType: 2
 --- !u!1 &451651065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,6 +1219,54 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &708052890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708052891}
+  - component: {fileID: 708052892}
+  m_Layer: 0
+  m_Name: Extra Bomb - Power Up
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &708052891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708052890}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1072632322}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &708052892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708052890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59dbf06a76763f54db317ef025c9ba14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExtraBombPool
+  pooledObjects: []
+  objectToPool: {fileID: 8299374646094335866, guid: ac849fa48db2e1b44a5d07aa5132311c, type: 3}
+  amountToPool: 10
+  parent: {fileID: 708052891}
 --- !u!1 &726607717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,6 +1557,7 @@ GameObject:
   - component: {fileID: 757822394}
   - component: {fileID: 757822397}
   - component: {fileID: 757822399}
+  - component: {fileID: 757822400}
   m_Layer: 3
   m_Name: Player Object
   m_TagString: Untagged
@@ -1670,6 +1733,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBombAttack
   bombPrefab: {fileID: 1258651726756828334, guid: f0257ad9e6b2d1c4b96a1fb8a156c736, type: 3}
+--- !u!114 &757822400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757822393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e9e11a775f1e345a49856c3e95d6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttributes
+  maxBombs: 1
+  bombExplosionDelay: 4
+  bombExplosionDistance: 3
 --- !u!1 &790546740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,6 +2312,7 @@ GameObject:
   - component: {fileID: 1029335607}
   - component: {fileID: 1029335606}
   - component: {fileID: 1029335608}
+  - component: {fileID: 1029335609}
   m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
@@ -2373,6 +2452,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a910c9386be4d41b37488e199e06ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyableObject
+--- !u!114 &1029335609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029335604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db66c183bf593f7489d1755ba94b8d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyableWall
+  powerUpType: 0
 --- !u!1 &1059270722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,6 +2633,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1911125562}
+  - {fileID: 708052891}
+  - {fileID: 1748422905}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1162911431
@@ -2555,6 +2649,7 @@ GameObject:
   - component: {fileID: 1162911434}
   - component: {fileID: 1162911433}
   - component: {fileID: 1162911435}
+  - component: {fileID: 1162911436}
   m_Layer: 6
   m_Name: Square (4)
   m_TagString: Untagged
@@ -2694,6 +2789,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a910c9386be4d41b37488e199e06ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyableObject
+--- !u!114 &1162911436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162911431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db66c183bf593f7489d1755ba94b8d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyableWall
+  powerUpType: 0
 --- !u!1 &1221171638
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,6 +2814,7 @@ GameObject:
   - component: {fileID: 1221171641}
   - component: {fileID: 1221171640}
   - component: {fileID: 1221171642}
+  - component: {fileID: 1221171643}
   m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
@@ -2845,6 +2954,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a910c9386be4d41b37488e199e06ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyableObject
+--- !u!114 &1221171643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221171638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db66c183bf593f7489d1755ba94b8d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyableWall
+  powerUpType: 3
 --- !u!1 &1286767225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,6 +3186,7 @@ GameObject:
   - component: {fileID: 1331864499}
   - component: {fileID: 1331864498}
   - component: {fileID: 1331864500}
+  - component: {fileID: 1331864501}
   m_Layer: 6
   m_Name: Square (2)
   m_TagString: Untagged
@@ -3203,6 +3326,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a910c9386be4d41b37488e199e06ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyableObject
+--- !u!114 &1331864501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331864496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db66c183bf593f7489d1755ba94b8d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyableWall
+  powerUpType: 3
 --- !u!1 &1514061212
 GameObject:
   m_ObjectHideFlags: 0
@@ -3652,6 +3788,54 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1748422904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1748422905}
+  - component: {fileID: 1748422906}
+  m_Layer: 0
+  m_Name: Bomb Explosion Buffer - Power Up
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1748422905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748422904}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1072632322}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1748422906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748422904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648688df9527dea4caf1f3aa955b6596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BombExplosionBufferPool
+  pooledObjects: []
+  objectToPool: {fileID: 4057893275851111237, guid: 00c186e9a9591b440a29176dd1ff0181, type: 3}
+  amountToPool: 10
+  parent: {fileID: 1748422905}
 --- !u!1 &1870708702
 GameObject:
   m_ObjectHideFlags: 0
@@ -4025,6 +4209,7 @@ GameObject:
   - component: {fileID: 2073877447}
   - component: {fileID: 2073877446}
   - component: {fileID: 2073877448}
+  - component: {fileID: 2073877449}
   m_Layer: 6
   m_Name: Square (5)
   m_TagString: Untagged
@@ -4164,6 +4349,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a910c9386be4d41b37488e199e06ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyableObject
+--- !u!114 &2073877449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073877444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db66c183bf593f7489d1755ba94b8d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyableWall
+  powerUpType: 0
 --- !u!1 &2084088750
 GameObject:
   m_ObjectHideFlags: 0
