@@ -9,7 +9,8 @@ public class ExtraBomb : MonoBehaviour
         if (collision.TryGetComponent(out PlayerAttributes playerAttributes))
         {
             playerAttributes.IncreaseMaxBombs(bombIncreaseAmount);
-            Destroy(gameObject);
+            
+            gameObject.SetActive(false);
         }
     }
 }

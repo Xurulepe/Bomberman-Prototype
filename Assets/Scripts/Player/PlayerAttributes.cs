@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerAttributes : MonoBehaviour
@@ -11,13 +12,17 @@ public class PlayerAttributes : MonoBehaviour
     public float BombExplosionDelay => bombExplosionDelay;
     public int BombExplosionDistance => bombExplosionDistance;
 
+    public event Action OnPowerUpCollected;
+
     public void IncreaseMaxBombs(int amount)
     {
         maxBombs += amount;
+        OnPowerUpCollected?.Invoke();
     }
 
     public void IncreaseBombExplosionDistance(int amount)
     {
         bombExplosionDistance += amount;
+        OnPowerUpCollected?.Invoke();
     }
 }

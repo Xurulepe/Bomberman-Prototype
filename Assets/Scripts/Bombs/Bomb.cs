@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class Bomb : MonoBehaviour, IDestroyable
     private float explosionTimer = 0f;
     private bool hasExploded = false;
     private Collider2D[] objectsHit;
+
+    public event Action OnBombExploded;
 
     private void OnEnable()
     {
@@ -33,6 +36,12 @@ public class Bomb : MonoBehaviour, IDestroyable
         }
     }
 
+    public void SetupBomb(PlayerAttributes playerAttributes)
+    {
+        explosionDelay = playerAttributes.BombExplosionDelay;
+        explosionDistance = playerAttributes.BombExplosionDistance;
+    }
+
     public void Destroy()
     {
         if (!hasExploded)
@@ -44,6 +53,8 @@ public class Bomb : MonoBehaviour, IDestroyable
     private void Explode()
     {
         hasExploded = true;
+
+        OnBombExploded?.Invoke();
 
         objectsHit = GetObjectsInExplosionRange();
 
@@ -61,6 +72,8 @@ public class Bomb : MonoBehaviour, IDestroyable
                 destroyable.Destroy();
             }
         }
+
+        OnBombExploded = null;
 
         gameObject.SetActive(false);
     }

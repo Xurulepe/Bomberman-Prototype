@@ -9,7 +9,8 @@ public class BombExplosionBuffer : MonoBehaviour
         if (collision.TryGetComponent(out PlayerAttributes playerAttributes))
         {
             playerAttributes.IncreaseBombExplosionDistance(distanceIncreaseAmount);
-            Destroy(gameObject);
+            
+            gameObject.SetActive(false);
         }
     }
 }
