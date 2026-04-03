@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5195872227884566946}
   - component: {fileID: 1534177072288287609}
   - component: {fileID: 8329773308268061038}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bomb Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,12 +48,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bomb
   explosionDelay: 5
   explosionDistance: 3
+  explosionThickness: 0.7
   explosionLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 200
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  obstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 320
 --- !u!61 &8329773308268061038
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -110,7 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7455197302618661094}
   - component: {fileID: 1199707140045647385}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bomb Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
