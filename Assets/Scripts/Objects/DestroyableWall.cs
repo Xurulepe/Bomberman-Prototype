@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class DestroyableWall : MonoBehaviour
@@ -7,7 +6,10 @@ public class DestroyableWall : MonoBehaviour
 
     private void OnDisable()
     {
-        DropPowerUp();
+        if (Application.isPlaying)
+        {
+            DropPowerUp();
+        }
     }
 
     public void DropPowerUp()

@@ -51,7 +51,7 @@ MonoBehaviour:
   explosionThickness: 0.7
   explosionLayerMask:
     serializedVersion: 2
-    m_Bits: 200
+    m_Bits: 712
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
