@@ -1,14 +1,17 @@
 using UnityEngine;
 
-public class EnemyCornerDetection : MonoBehaviour
+namespace Game.Enemy.AI
 {
-    [SerializeField] private PatrolBehaviour patrolBehaviour;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class EnemyCornerDetection : MonoBehaviour
     {
-        if (collision.CompareTag("MapCorner"))
+        [SerializeField] private PatrolBehaviour patrolBehaviour;
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            patrolBehaviour.ChangeDirection();
+            if (collision.CompareTag("MapCorner"))
+            {
+                patrolBehaviour.ChangeDirection();
+            }
         }
     }
 }

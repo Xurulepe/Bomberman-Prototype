@@ -2,79 +2,79 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrolBehaviour : MonoBehaviour
+namespace Game.Enemy.AI
 {
-    [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private LayerMask wallsLayerMask;
-    [SerializeField] private float wallCheckDistance = 0.5f;
-
-    private Vector2 moveDirection = Vector2.right;
-    private List<Vector2> directions = new List<Vector2>();
-
-    private Rigidbody2D rb;
-
-    private void Awake()
+    public class PatrolBehaviour : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        [Header("Patrol Settings")]
+        [SerializeField] private LayerMask wallsLayerMask;
+        [SerializeField] private float wallCheckDistance = 0.5f;
 
-    private void Start()
-    {
-        ChangeDirection();
-    }
+        private Vector2 moveDirection = Vector2.right;
+        private List<Vector2> directions = new List<Vector2>();
 
-    private void Update()
-    {
-        CheckWalls();
-    }
+        public Vector2 MoveDirection => moveDirection;
 
-    private void FixedUpdate()
-    {
-        Move();
-    }
+        public event Action OnDirectionChanged;
+        public event Action OnWallColision;
 
-    private void Move()
-    {
-        rb.linearVelocity = moveDirection * moveSpeed;
-    }
-
-    private void CheckWalls()
-    {
-        if (Physics2D.Raycast(transform.position, moveDirection, wallCheckDistance, wallsLayerMask))
+        private void OnEnable()
         {
             ChangeDirection();
         }
-    }
 
-    public void ChangeDirection()
-    {
-        directions.Clear();
-
-        RaycastHit2D hitUp = Physics2D.Raycast(transform.position, Vector2.up, wallCheckDistance, wallsLayerMask);
-        RaycastHit2D hitDown = Physics2D.Raycast(transform.position, Vector2.down, wallCheckDistance, wallsLayerMask);
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, wallCheckDistance, wallsLayerMask);
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, wallCheckDistance, wallsLayerMask);
-
-        if (hitUp.collider == null)
+        private void Update()
         {
-            directions.Add(Vector2.up);
-        }
-        if (hitDown.collider == null)
-        {
-            directions.Add(Vector2.down);
-        }
-        if (hitLeft.collider == null)
-        {
-            directions.Add(Vector2.left);
-        }
-        if (hitRight.collider == null)
-        {
-            directions.Add(Vector2.right);
+            CheckWalls();
         }
 
-        if (directions.Count > 0)
+        public void SetPatrolSettings(float distance)
         {
-            moveDirection = directions[UnityEngine.Random.Range(0, directions.Count)];
-        }       
+            wallCheckDistance = distance;
+        }
+
+        private void CheckWalls()
+        {
+            if (Physics2D.Raycast(transform.position, moveDirection, wallCheckDistance, wallsLayerMask))
+            {
+                OnWallColision?.Invoke();
+
+                ChangeDirection();
+            }
+        }
+
+        public void ChangeDirection()
+        {
+            directions.Clear();
+
+            RaycastHit2D hitUp = Physics2D.Raycast(transform.position, Vector2.up, wallCheckDistance, wallsLayerMask);
+            RaycastHit2D hitDown = Physics2D.Raycast(transform.position, Vector2.down, wallCheckDistance, wallsLayerMask);
+            RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, wallCheckDistance, wallsLayerMask);
+            RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, wallCheckDistance, wallsLayerMask);
+
+            if (hitUp.collider == null)
+            {
+                directions.Add(Vector2.up);
+            }
+            if (hitDown.collider == null)
+            {
+                directions.Add(Vector2.down);
+            }
+            if (hitLeft.collider == null)
+            {
+                directions.Add(Vector2.left);
+            }
+            if (hitRight.collider == null)
+            {
+                directions.Add(Vector2.right);
+            }
+
+            if (directions.Count > 0)
+            {
+                moveDirection = directions[UnityEngine.Random.Range(0, directions.Count)];
+            }
+
+            OnDirectionChanged?.Invoke();
+        }
     }
 }

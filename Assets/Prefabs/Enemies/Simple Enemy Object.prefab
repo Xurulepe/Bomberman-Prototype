@@ -184,6 +184,10 @@ GameObject:
   - component: {fileID: 8211844933680035090}
   - component: {fileID: 6051671721202447899}
   - component: {fileID: 4905218660788180375}
+  - component: {fileID: 6031002789272191689}
+  - component: {fileID: 2651179117446432165}
+  - component: {fileID: 8844736206315242344}
+  - component: {fileID: 7070662717090715154}
   - component: {fileID: 56750598570183922}
   - component: {fileID: 3918808717663536562}
   - component: {fileID: 8593600309191996569}
@@ -274,6 +278,68 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.7
+--- !u!114 &6031002789272191689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433862763780138030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16204b896c82d8458da4bed5d9024e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Slime
+  idleTime: 1.5
+  idleInterval: 5
+  moveSpeed: 1
+  wallsLayerMask:
+    serializedVersion: 2
+    m_Bits: 448
+  wallCheckDistance: 0.7
+  currentState: 0
+  enemyMovement: {fileID: 8844736206315242344}
+  idleBehaviour: {fileID: 7070662717090715154}
+  patrolBehaviour: {fileID: 56750598570183922}
+--- !u!114 &2651179117446432165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433862763780138030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8663127ce499a0e4db2f2d562d4e1cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlimeAI
+  idleBehaviour: {fileID: 7070662717090715154}
+  patrolBehaviour: {fileID: 56750598570183922}
+  controller: {fileID: 6031002789272191689}
+--- !u!114 &8844736206315242344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433862763780138030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0fe931986124734daa250aef1b6ca54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+--- !u!114 &7070662717090715154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433862763780138030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c978265e00462e64e81cb18d980b0536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IdleBehaviour
 --- !u!114 &56750598570183922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89581812d515b447ae74a79d63daa28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolBehaviour
-  moveSpeed: 1.5
   wallsLayerMask:
     serializedVersion: 2
     m_Bits: 448
