@@ -16,7 +16,6 @@ namespace Game.Enemy
 
         public void ChangeState(EnemyState newState)
         {
-            Debug.Log($"Changing state from {currentState} to {newState}");
             currentState = newState;
         }
     }

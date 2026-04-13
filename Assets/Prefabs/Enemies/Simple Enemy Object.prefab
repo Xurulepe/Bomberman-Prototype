@@ -313,9 +313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8663127ce499a0e4db2f2d562d4e1cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlimeAI
-  idleBehaviour: {fileID: 7070662717090715154}
-  patrolBehaviour: {fileID: 56750598570183922}
-  controller: {fileID: 6031002789272191689}
 --- !u!114 &8844736206315242344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +353,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   wallCheckDistance: 0.7
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  playerDetectionDistance: 0
+  minimumPlayerDetectionRange: 0
 --- !u!114 &3918808717663536562
 MonoBehaviour:
   m_ObjectHideFlags: 0

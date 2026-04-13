@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDestroyable
+namespace Game.Player
 {
-    public void Destroy()
+    public class Player : MonoBehaviour, IDestroyable
     {
-        
-        Debug.Log("Player destroyed!");
+        public void Destroy()
+        {
 
-        gameObject.SetActive(false);
+            Debug.Log("Player destroyed!");
+
+            gameObject.SetActive(false);
+        }
     }
 }

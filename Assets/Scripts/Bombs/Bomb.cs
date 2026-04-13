@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Game.Player;
 
 public class Bomb : MonoBehaviour, IDestroyable
 {

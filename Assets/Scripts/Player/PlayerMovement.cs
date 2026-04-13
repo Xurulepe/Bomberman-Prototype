@@ -1,32 +1,35 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+namespace Game.Player
 {
-    [Header("Movement Settings")]
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private Vector2 moveInput;
-
-    // components
-    private Rigidbody2D rb;
-
-    private void Awake()
+    public class PlayerMovement : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        [Header("Movement Settings")]
+        [SerializeField] private float speed = 5f;
+        [SerializeField] private Vector2 moveInput;
 
-    private void FixedUpdate()
-    {
-        Move();
-    }
+        // components
+        private Rigidbody2D rb;
 
-    public void SetMove(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>();
-    }
+        private void Awake()
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
 
-    private void Move()
-    {
-        rb.linearVelocity = moveInput * speed;
+        private void FixedUpdate()
+        {
+            Move();
+        }
+
+        public void SetMove(InputAction.CallbackContext context)
+        {
+            moveInput = context.ReadValue<Vector2>();
+        }
+
+        private void Move()
+        {
+            rb.linearVelocity = moveInput * speed;
+        }
     }
 }
