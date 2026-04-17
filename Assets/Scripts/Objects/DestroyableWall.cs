@@ -1,14 +1,24 @@
 using UnityEngine;
 
-public class DestroyableWall : MonoBehaviour
+public class DestroyableWall : DestroyableObject
 {
     [SerializeField] private PowerUpType powerUpType;
 
-    private void OnDisable()
+    private void OnEnable()
     {
-        if (Application.isPlaying)
+        int randomChance = Random.Range(0, 100);
+
+        if (randomChance < 50)
         {
-            DropPowerUp();
+            powerUpType = PowerUpType.None;
+        }
+        else if (randomChance < 75)
+        {
+            powerUpType = PowerUpType.BombRangeIncrease;
+        }
+        else
+        {
+            powerUpType = PowerUpType.ExtraBomb;
         }
     }
 
@@ -47,5 +57,12 @@ public class DestroyableWall : MonoBehaviour
             powerUp.transform.rotation = transform.rotation;
             powerUp.SetActive(true);
         }
+    }
+
+    public override void Destroy()
+    {
+        DropPowerUp();
+
+        gameObject.SetActive(false);
     }
 }
