@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
+    public static GridManager Instance { get; private set; }
+    
     [Header("Grid Settings")]
     [SerializeField] private int gridSizeX;
     [SerializeField] private int gridSizeY;
@@ -14,6 +17,16 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Transform spawnParent;
     [SerializeField] private int spawnChancePercent;
     [SerializeField] private List<Vector2> safeZones = new List<Vector2>();
+    [SerializeField] private List<Vector2> freeToSpawnEnemyPositions = new List<Vector2>();
+
+    public List<Vector2> FreeToSpawnEnemyPositions => freeToSpawnEnemyPositions;
+
+    public event Action OnGridGenerated;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -32,12 +45,7 @@ public class GridManager : MonoBehaviour
 
                 if (safeZones.Contains(new Vector2(x, y)))
                 {
-                    continue; // Skip spawning in safe zones
-                }
-
-                if (Random.Range(0, 100) >= spawnChancePercent)
-                {
-                    continue; // Skip spawning based on chance
+                    continue; 
                 }
 
                 bool isYEvenOrZero = y % 2 == 0 || y == 0;
@@ -45,12 +53,21 @@ public class GridManager : MonoBehaviour
 
                 if (isYEvenOrZero && isXEvenOrZero)
                 {
-                    continue; // Skip spawning on even coordinates
+                    continue; 
+                }
+
+                if (UnityEngine.Random.Range(0, 100) >= spawnChancePercent)
+                {
+                    AddFreeToSpawnEnemyPosition(new Vector2(x, y));
+
+                    continue; 
                 }
 
                 Instantiate(spawnPrefab, spawnPosition, Quaternion.identity, spawnParent);
             }
         }
+
+        OnGridGenerated?.Invoke();
     }
 
     private void AddCornersToSafeZones()
@@ -74,5 +91,23 @@ public class GridManager : MonoBehaviour
         safeZones.Add(new Vector2(startPositionX + gridSizeX - 1, startPositionY + gridSizeY - 1)); 
         safeZones.Add(new Vector2(startPositionX + gridSizeX - 1, startPositionY + gridSizeY - 2));
         safeZones.Add(new Vector2(startPositionX + gridSizeX - 2, startPositionY + gridSizeY - 1));
+    }
+
+    private void AddFreeToSpawnEnemyPosition(Vector2 position)
+    {
+        // não adiciona a posição se ela for a primeira ou ultima coluna ou linha
+        // para evitar que os inimigos sejam gerados nas bordas do grid, onde o jogador pode ficar preso
+        bool isXOnEdge = position.x == startPositionX || position.x == startPositionX + gridSizeX - 1;
+        bool isYOnEdge = position.y == startPositionY || position.y == startPositionY + gridSizeY - 1;
+
+        if (isXOnEdge || isYOnEdge)
+        {
+            return;
+        }
+
+        if (!freeToSpawnEnemyPositions.Contains(position))
+        {
+            freeToSpawnEnemyPositions.Add(position);
+        }
     }
 }
