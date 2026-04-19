@@ -66,8 +66,6 @@ public class Bomb : MonoBehaviour, IDestroyable
                 continue;
             }
 
-            Debug.Log("Hit object: " + hit.name);
-
             if (hit.TryGetComponent(out IDestroyable destroyable))
             {
                 destroyable.Destroy();

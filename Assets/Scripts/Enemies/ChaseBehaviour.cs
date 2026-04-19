@@ -47,12 +47,10 @@ namespace Game.Enemy.AI
         private void OnEnable()
         {
             navMeshAgent.enabled = true;
-            navMeshAgent.isStopped = false;
         }
 
         private void OnDisable()
         {
-            navMeshAgent.isStopped = true;
             navMeshAgent.enabled = false;
         }
     }

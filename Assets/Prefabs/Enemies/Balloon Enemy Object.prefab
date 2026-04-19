@@ -109,8 +109,6 @@ GameObject:
   - component: {fileID: 8861508267640994518}
   - component: {fileID: 2581435727051420628}
   - component: {fileID: 5225246247654778123}
-  - component: {fileID: 3233327283153512468}
-  - component: {fileID: 3227602607307315287}
   m_Layer: 9
   m_Name: Balloon Enemy Object
   m_TagString: Untagged
@@ -209,7 +207,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1.5
-  m_Acceleration: 8
+  m_Acceleration: 1.5
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -318,30 +316,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChaseBehaviour
   chaseRange: 5
---- !u!114 &3233327283153512468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6432349421324806130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23a910c9386be4d41b37488e199e06ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DestroyableObject
---- !u!114 &3227602607307315287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6432349421324806130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ae4fc488a4fc66448b290c1bf14a10d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AutoCenterToIntPosition
 --- !u!1 &7549344031701309617
 GameObject:
   m_ObjectHideFlags: 0

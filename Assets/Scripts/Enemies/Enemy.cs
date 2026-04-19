@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game.Enemy
 {
-    public abstract class Enemy : MonoBehaviour
+    public abstract class Enemy : MonoBehaviour, IDestroyable
     {
         [Header("Base Enemy Settings")]
         [SerializeField] protected float idleTime = 0.7f;
@@ -17,6 +17,13 @@ namespace Game.Enemy
         public void ChangeState(EnemyState newState)
         {
             currentState = newState;
+        }
+
+        public virtual void Destroy()
+        {
+            Debug.Log("Enemy destroyed: " + gameObject.name);
+
+            gameObject.SetActive(false);
         }
     }
 
