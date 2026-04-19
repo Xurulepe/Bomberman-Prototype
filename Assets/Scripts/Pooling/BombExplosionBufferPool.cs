@@ -4,8 +4,10 @@ public class BombExplosionBufferPool : ObjectPooling
 {
     public static BombExplosionBufferPool Instance { get; private set; }
 
-    private void Awake()
+    protected override void Awake()
     {
         Instance = this;
+
+        base.Awake();
     }
 }

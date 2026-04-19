@@ -4,8 +4,10 @@ public class ExtraBombPool : ObjectPooling
 {
     public static ExtraBombPool Instance { get; private set; }
 
-    private void Awake()
+    protected override void Awake()
     {
         Instance = this;
+
+        base.Awake();
     }
 }

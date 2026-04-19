@@ -4,8 +4,10 @@ public class BalloonEnemyPool : ObjectPooling
 {
     public static BalloonEnemyPool Instance { get; private set; }
 
-    private void Awake()
+    protected override void Awake()
     {
         Instance = this;
+
+        base.Awake();
     }
 }

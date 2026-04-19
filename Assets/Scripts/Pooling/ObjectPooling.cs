@@ -9,7 +9,12 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] protected int amountToPool;
     [SerializeField] protected Transform parent;
 
-    protected void Start()
+    protected virtual void Awake()
+    {
+        InitPool();
+    }
+
+    private void InitPool()
     {
         pooledObjects = new List<GameObject>();
 

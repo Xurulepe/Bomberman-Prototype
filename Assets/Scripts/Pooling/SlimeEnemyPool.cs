@@ -4,8 +4,10 @@ public class SlimeEnemyPool : ObjectPooling
 {
     public static SlimeEnemyPool Instance { get; private set; }
 
-    private void Awake()
+    protected override void Awake()
     {
         Instance = this;
+
+        base.Awake();
     }
 }
