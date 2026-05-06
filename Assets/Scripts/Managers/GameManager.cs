@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [SerializeField] private int score;
+
     public enum GameOverType
     {
         Win,
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     private GameOverType currentGameOverType;
     public GameOverType CurrentGameOverType => currentGameOverType;
+    public int Score => score;
 
     public event Action OnGameStarted;
     public event Action OnGameOver;
@@ -27,9 +30,10 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         OnGameStarted?.Invoke();
+
+        score = 0;
     }
 
     public void GameOver(GameOverType gameOverType)
@@ -38,5 +42,10 @@ public class GameManager : MonoBehaviour
         currentGameOverType = gameOverType;
 
         OnGameOver?.Invoke();
+    }
+
+    public void AddScore(int points)
+    {
+        score += points;
     }
 }

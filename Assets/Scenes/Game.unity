@@ -4893,6 +4893,7 @@ MonoBehaviour:
   gameOverMenu: {fileID: 1770742457}
   backgroundPanel: {fileID: 52073206}
   resultText: {fileID: 538691894}
+  scoreText: {fileID: 1490221556}
 --- !u!1 &1282889272
 GameObject:
   m_ObjectHideFlags: 0
@@ -5010,6 +5011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e8b5ccc1a3180c49aa19b6b50b90e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  score: 0
 --- !u!4 &1288234512
 Transform:
   m_ObjectHideFlags: 0
@@ -5701,7 +5703,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: 00000
+  m_text: 'Score: {0}
 
 '
   m_isRightToLeft: 0

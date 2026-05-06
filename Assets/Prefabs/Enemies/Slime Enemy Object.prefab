@@ -296,6 +296,7 @@ MonoBehaviour:
     m_Bits: 448
   wallCheckDistance: 0.7
   currentState: 0
+  scoreValue: 10
   enemyMovement: {fileID: 8844736206315242344}
   idleBehaviour: {fileID: 7070662717090715154}
   patrolBehaviour: {fileID: 56750598570183922}

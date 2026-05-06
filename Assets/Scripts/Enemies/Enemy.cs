@@ -11,6 +11,7 @@ namespace Game.Enemy
         [SerializeField] protected LayerMask wallsLayerMask;
         [SerializeField] protected float wallCheckDistance = 0.5f;
         [SerializeField] protected EnemyState currentState;
+        [SerializeField] protected int scoreValue;
 
         public EnemyState CurrentState => currentState;
 
@@ -23,6 +24,7 @@ namespace Game.Enemy
         {
             Debug.Log("Enemy destroyed: " + gameObject.name);
 
+            GameManager.Instance.AddScore(scoreValue);
             EnemyManager.Instance.IncreaseDeadEnemiesCount();
 
             gameObject.SetActive(false);

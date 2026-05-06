@@ -10,6 +10,7 @@ public class GameOverMenu : MonoBehaviour
 
     [Header("Game Over Info")]
     [SerializeField] private TextMeshProUGUI resultText;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     private void Start()
     {
@@ -46,6 +47,8 @@ public class GameOverMenu : MonoBehaviour
         {
             resultText.text = "Draw!";
         }
+
+        scoreText.text = $"Score: {GameManager.Instance.Score}";
     }
 
     public void RestartGame()
