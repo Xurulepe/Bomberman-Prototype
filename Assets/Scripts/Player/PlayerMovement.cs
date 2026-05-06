@@ -17,6 +17,12 @@ namespace Game.Player
             rb = GetComponent<Rigidbody2D>();
         }
 
+        private void Start()
+        {
+            GameManager.Instance.OnGameOver += LockMovement;
+            GameManager.Instance.OnGameStarted += UnlockMovement;
+        }
+
         private void FixedUpdate()
         {
             Move();
@@ -30,6 +36,26 @@ namespace Game.Player
         private void Move()
         {
             rb.linearVelocity = moveInput * speed;
+        }
+
+        private void LockMovement()
+        {
+            rb.linearVelocity = Vector2.zero;
+
+            this.enabled = false;
+        }
+
+        private void UnlockMovement()
+        {
+            rb.linearVelocity = Vector2.zero;
+
+            this.enabled = true;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.Instance.OnGameOver -= LockMovement;
+            GameManager.Instance.OnGameStarted -= UnlockMovement;
         }
     }
 }

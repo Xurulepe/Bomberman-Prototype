@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private GameOverType currentGameOverType;
     public GameOverType CurrentGameOverType => currentGameOverType;
 
+    public event Action OnGameStarted;
     public event Action OnGameOver;
 
     private void Awake()
@@ -24,8 +25,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        OnGameStarted?.Invoke();
     }
 
     public void GameOver(GameOverType gameOverType)

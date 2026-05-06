@@ -27,6 +27,18 @@ public class Bomb : MonoBehaviour, IDestroyable
         StartCoroutine(IgnoreCollisionWithPlayersUntilExit());
     }
 
+    private void Start()
+    {
+        GameManager.Instance.OnGameOver += DisableBomb;
+    }
+
+    private void DisableBomb()
+    {
+        this.enabled = false;
+
+        GameManager.Instance.OnGameOver -= DisableBomb;
+    }
+
     private void Update()
     {
         explosionTimer += Time.deltaTime;
@@ -148,7 +160,7 @@ public class Bomb : MonoBehaviour, IDestroyable
 
         if (playerCollider == null)
         {
-            yield break; 
+            yield break;
         }
 
         Physics2D.IgnoreCollision(bombCollider, playerCollider, true);
@@ -165,4 +177,4 @@ public class Bomb : MonoBehaviour, IDestroyable
         Gizmos.DrawWireCube(transform.position, new Vector2(explosionDistance * 2f, explosionThickness));
         Gizmos.DrawWireCube(transform.position, new Vector2(explosionThickness, explosionDistance * 2f));
     }
-}
+}   

@@ -26,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
             if (enemy != null)
             {
                 enemy.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, 0);
+                EnemyManager.Instance.AddEnemy(enemy);
                 enemy.SetActive(true);
             }
         }

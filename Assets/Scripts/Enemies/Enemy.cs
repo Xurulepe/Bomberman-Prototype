@@ -23,6 +23,8 @@ namespace Game.Enemy
         {
             Debug.Log("Enemy destroyed: " + gameObject.name);
 
+            EnemyManager.Instance.IncreaseDeadEnemiesCount();
+
             gameObject.SetActive(false);
         }
     }
